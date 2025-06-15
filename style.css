@@ -1,163 +1,229 @@
 /* style.css */
+/* 定義 CSS 變數，方便統一管理顏色和字體，靈感來自 Papier Tigre 的繽紛調色盤 */
 :root {
-    --primary-bg: #f8f8f8;
-    --secondary-bg: #ffffff;
-    --text-color: #333333;
-    --light-text-color: #666666;
-    --accent-color: #a0a0a0; /* Subtle accent for a luxurious feel */
-    --border-color: #e0e0e0;
+    --primary-bg: #fdfdfd; /* 整體頁面背景，近似純白 */
+    --text-color: #333333; /* 主要文字顏色，深灰色 */
+    --heading-color: #1a202c; /* 標題文字顏色，更深沉的灰藍色 */
+
+    /* 鮮豔的強調色，參考 Papier Tigre 的配色風格 */
+    --accent-red: #FF6B6B;      /* 活潑的紅色 */
+    --accent-turquoise: #4ECDC4; /* 清新的綠松石色 */
+    --accent-yellow: #F8D347;    /* 明亮的黃色 */
+    --accent-green: #BADA55;     /* 嫩綠色 */
+    --accent-purple: #8367C7;    /* 溫暖的紫色 */
+
+    --border-line: #e0e0e0; /* 區塊間分隔線的顏色，淺灰色 */
+    --shadow-light: rgba(0,0,0,0.05); /* 輕微的陰影效果 */
 }
 
+/* 全局樣式設定 */
 body {
-    font-family: 'Lato', sans-serif;
-    line-height: 1.6;
+    font-family: 'Inter', sans-serif; /* 使用 Inter 字體作為內文，清晰現代 */
+    line-height: 1.7; /* 行高，增加閱讀舒適度 */
     margin: 0;
     padding: 0;
-    background-color: var(--primary-bg);
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    align-items: center;
+    background-color: var(--primary-bg); /* 設定主要背景色 */
+    color: var(--text-color); /* 設定主要文字顏色 */
+    display: flex; /* 使用 Flexbox 布局實現垂直置中和內容區塊彈性 */
+    flex-direction: column; /* 垂直排列子元素 */
+    min-height: 100vh; /* 確保內容佔據整個視窗高度 */
+    align-items: center; /* 水平居中 */
+    box-sizing: border-box; /* 確保 padding 和 border 包含在元素的總寬高內 */
 }
 
+/* 頁首樣式 */
 header {
     width: 100%;
-    background-color: var(--secondary-bg);
-    padding: 2em 0;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    background-color: var(--accent-turquoise); /* 頁首使用鮮豔的綠松石色背景 */
+    padding: 2.5em 0; /* 上下邊距 */
+    text-align: center; /* 文字居中 */
+    box-shadow: 0 4px 8px var(--shadow-light); /* 輕微陰影，增加層次感 */
+    color: white; /* 頁首文字顏色設為白色，與背景形成對比 */
 }
 
 header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3em;
-    color: var(--text-color);
-    letter-spacing: 0.1em;
+    font-family: 'Montserrat', sans-serif; /* 使用 Montserrat 字體作為標題，粗體且現代 */
+    font-size: 3.5em; /* 標題字體大小 */
+    letter-spacing: 0.15em; /* 增加字元間距，提升設計感 */
     margin: 0;
+    text-transform: uppercase; /* 標題文字轉換為大寫 */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1); /* 文字陰影，讓標題更突出 */
 }
 
+/* 主要內容區域樣式 */
 main {
-    flex-grow: 1;
-    width: 90%;
-    max-width: 800px;
+    flex-grow: 1; /* 佔據剩餘垂直空間 */
+    width: 90%; /* 寬度佔 90% */
+    max-width: 960px; /* 最大寬度限制，避免在寬螢幕上過於分散 */
     padding: 2em 0;
-    margin: 2em auto;
-    background-color: var(--secondary-bg);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    border-radius: 5px;
+    margin: 2em auto; /* 上下邊距，左右自動居中 */
+    background-color: white; /* 主要內容區背景色為白色 */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* 較明顯陰影，增加立體感 */
+    border-radius: 12px; /* 圓角邊框，更柔和的視覺效果 */
+    overflow: hidden; /* 防止內部元素溢出 */
 }
 
+/* 各個內容區塊 (section) 樣式 */
 section {
-    padding: 2em 3em;
-    border-bottom: 1px solid var(--border-color);
+    padding: 2.5em 3.5em; /* 內邊距，提供內容足夠的呼吸空間 */
+    border-bottom: 1px dashed var(--border-line); /* 區塊間使用虛線分隔，增添玩味 */
+    position: relative;
+    z-index: 1; /* 確保內容位於任何背景裝飾之上 */
 }
 
 section:last-child {
-    border-bottom: none;
+    border-bottom: none; /* 最後一個區塊沒有底部邊框 */
 }
 
+/* 區塊標題 (h2) 樣式 */
 h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2em;
-    color: var(--accent-color);
+    font-family: 'Montserrat', sans-serif; /* 標題字體 */
+    font-size: 2.5em;
+    color: var(--heading-color); /* 標題顏色 */
     text-align: center;
     margin-bottom: 1.5em;
     position: relative;
+    text-transform: uppercase; /* 標題文字轉換為大寫 */
+    font-weight: 700; /* 粗體標題 */
 }
 
 h2::after {
-    content: '';
+    content: ''; /* 偽元素，用於標題下方的彩色短線裝飾 */
     position: absolute;
     left: 50%;
-    bottom: -0.5em;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 2px;
-    background-color: var(--accent-color);
+    bottom: -0.5em; /* 位於標題下方 */
+    transform: translateX(-50%); /* 水平居中 */
+    width: 70px; /* 短線寬度 */
+    height: 4px; /* 短線高度 */
+    background-color: var(--accent-red); /* 短線顏色使用活潑的紅色 */
+    border-radius: 2px; /* 圓角短線 */
 }
 
+/* 介紹文字樣式 */
 .intro p {
-    font-size: 1.1em;
+    font-size: 1.2em; /* 稍大的字體 */
     text-align: center;
-    max-width: 600px;
+    max-width: 700px; /* 限制段落寬度，提升閱讀性 */
     margin: 0 auto;
-    color: var(--light-text-color);
+    color: var(--text-color);
+    line-height: 1.8; /* 更大的行高 */
 }
 
+/* 服務列表 (ul) 樣式 */
 .services ul {
-    list-style: none;
+    list-style: none; /* 移除列表項目符號 */
     padding: 0;
-    margin: 0 auto;
-    max-width: 500px;
+    margin: 2em auto 0;
+    max-width: 700px;
+    display: grid; /* 使用 CSS Grid 布局，使服務項目整齊排列 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 自動適應欄數，最小寬度 280px */
+    gap: 1.5em; /* 網格項目之間的間距 */
 }
 
+/* 服務列表項目 (li) 樣式 */
 .services li {
-    background-color: var(--primary-bg);
-    margin-bottom: 1em;
-    padding: 1em 1.5em;
-    border-left: 3px solid var(--accent-color);
-    border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-    font-size: 1.05em;
+    background-color: var(--primary-bg); /* 服務項目背景色 */
+    padding: 1.5em;
+    border-radius: 8px; /* 圓角邊框 */
+    box-shadow: 0 2px 5px var(--shadow-light); /* 輕微陰影 */
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 鼠標懸停時的平滑過渡效果 */
+    text-align: center;
+    color: var(--text-color);
+    border: 2px solid; /* 邊框，用於添加強調色 */
 }
 
+/* 根據項目位置，為服務列表項目添加不同的邊框顏色，增加視覺豐富性 */
+.services li:nth-child(1) { border-color: var(--accent-red); }
+.services li:nth-child(2) { border-color: var(--accent-turquoise); }
+.services li:nth-child(3) { border-color: var(--accent-yellow); }
+.services li:nth-child(4) { border-color: var(--accent-green); }
+/* 如果有更多服務項目，可以繼續添加 nth-child 或使用不同的配色策略 */
+
+/* 服務列表項目鼠標懸停效果 */
+.services li:hover {
+    transform: translateY(-5px); /* 向上輕微移動 */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15); /* 更明顯的陰影 */
+}
+
+/* 聯繫文字樣式 */
 .contact p {
     text-align: center;
-    font-size: 1.1em;
-}
-
-a {
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
+    font-size: 1.2em;
     color: var(--text-color);
 }
 
+/* 連結 (a) 樣式 */
+a {
+    color: var(--accent-purple); /* 連結顏色使用紫色，醒目且不失優雅 */
+    text-decoration: none; /* 移除下劃線 */
+    font-weight: 600; /* 連結文字稍粗 */
+    transition: color 0.3s ease; /* 顏色變化過渡效果 */
+}
+
+a:hover {
+    color: var(--accent-red); /* 鼠標懸停時連結顏色變為紅色 */
+}
+
+/* 頁腳樣式 */
 footer {
     width: 100%;
-    padding: 1.5em 0;
+    padding: 1.8em 0;
     text-align: center;
-    color: var(--light-text-color);
-    font-size: 0.9em;
-    background-color: var(--secondary-bg);
-    border-top: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-size: 0.95em;
+    background-color: var(--accent-yellow); /* 頁腳使用鮮明的黃色背景 */
+    border-top: 1px dashed var(--border-line); /* 虛線邊框 */
     margin-top: 2em;
+    box-shadow: 0 -2px 5px var(--shadow-light); /* 頁腳輕微陰影 */
 }
 
+/* 響應式設計：針對平板電腦尺寸 (最大寬度 900px) */
+@media (max-width: 900px) {
+    main {
+        width: 95%; /* 主內容區寬度調整 */
+    }
+    section {
+        padding: 2em 2.5em; /* 內邊距調整 */
+    }
+}
+
+/* 響應式設計：針對較小平板和手機尺寸 (最大寬度 768px) */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2.5em;
+        font-size: 2.8em; /* 頁首標題字體縮小 */
     }
-
-    main {
-        width: 95%;
-        padding: 1em 0;
-    }
-
-    section {
-        padding: 1.5em 1.5em;
-    }
-
     h2 {
-        font-size: 1.8em;
+        font-size: 2em; /* 區塊標題字體縮小 */
+    }
+    .services ul {
+        grid-template-columns: 1fr; /* 服務項目在小螢幕上垂直堆疊 */
+    }
+    section {
+        padding: 1.5em 2em; /* 內邊距進一步調整 */
     }
 }
 
+/* 響應式設計：針對小型手機尺寸 (最大寬度 480px) */
 @media (max-width: 480px) {
     header h1 {
-        font-size: 2em;
+        font-size: 2.2em;
+        letter-spacing: 0.1em;
     }
-
-    section {
-        padding: 1em 1em;
+    h2 {
+        font-size: 1.8em;
+        margin-bottom: 1em;
     }
-
+    h2::after {
+        width: 50px;
+        height: 3px;
+        bottom: -0.3em;
+    }
     .intro p, .contact p, .services li {
         font-size: 1em;
+    }
+    section {
+        padding: 1em 1.5em;
     }
 }
